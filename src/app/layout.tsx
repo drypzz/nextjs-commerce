@@ -4,7 +4,7 @@ import "./globals.css";
 import clsx from "clsx";
 
 import Navbar from "./components/Navbar";
-
+import Hydrate from "./components/Hydrate";
 import { ptBR } from "@clerk/localizations";
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -24,10 +24,12 @@ export default function RootLayout({
     <ClerkProvider localization={ptBR}>
       <html lang="pt-br">
         <body className={clsx(inter.className, 'bg-slate-700')}>
-          <Navbar />
-          <main className="bg-slate-700 h-screen p-16">
-            {children}
-          </main>
+          <Hydrate>
+            <Navbar />
+            <main className="bg-slate-700 h-screen p-16">
+              {children}
+            </main>
+          </Hydrate>
         </body>
       </html>
     </ClerkProvider>
